@@ -1,33 +1,64 @@
 import React from "react";
 import { Drawer, List, ListItem, ListItemText } from "@mui/material";
 
-const Sidebar: React.FC = () => {
+type SidebarProps = {
+  onSectionClick: (
+    section:
+      | "overview"
+      | "gettingStarted"
+      | "button"
+      | "coreFeatures"
+      | "dropdown"
+      | "toggler"
+  ) => void;
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ onSectionClick }) => {
   return (
     <Drawer
       variant="permanent"
       sx={{
         width: 240,
         flexShrink: 0,
-        [`& .MuiDrawer-paper`]: { width: 240, boxSizing: "border-box" },
       }}
     >
       <List>
-        <ListItem button key="Overview">
+        <ListItem
+          button
+          onClick={() => onSectionClick("overview")}
+          key="Overview"
+        >
           <ListItemText primary="Overview" />
         </ListItem>
-        <ListItem button key="Getting Started">
+        <ListItem
+          button
+          onClick={() => onSectionClick("gettingStarted")}
+          key="Getting Started"
+        >
           <ListItemText primary="Getting Started" />
         </ListItem>
-        <ListItem button key="Button">
+        <ListItem button onClick={() => onSectionClick("button")} key="Button">
           <ListItemText primary="Button" />
         </ListItem>
-        <ListItem button key="Core Features">
+        <ListItem
+          button
+          onClick={() => onSectionClick("coreFeatures")}
+          key="Core Features"
+        >
           <ListItemText primary="Core Features" />
         </ListItem>
-        <ListItem button key="Dropdown">
+        <ListItem
+          button
+          onClick={() => onSectionClick("dropdown")}
+          key="Dropdown"
+        >
           <ListItemText primary="Dropdown" />
         </ListItem>
-        <ListItem button key="Toggler">
+        <ListItem
+          button
+          onClick={() => onSectionClick("toggler")}
+          key="Toggler"
+        >
           <ListItemText primary="Toggler" />
         </ListItem>
       </List>
